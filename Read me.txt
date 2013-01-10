@@ -1,0 +1,11 @@
+Hello.
+this is the read me file of the Medical index project
+
+Introduction:
+the purpose of the medical index project is to provide a directory for the medical facilities and professionals working in the medical field to help the consumers to make a decision regarding which facility or professional is more suitable to provide services for them.
+
+Folders:
+1) DB folder contains database scripts of the system
+2) core folder containing business and service layer files and code
+3) crawler folder contains files and codes of the crawler component responsiple for automatic updating data in the database
+4) clients folder contains files and codes of the various clients of the system
