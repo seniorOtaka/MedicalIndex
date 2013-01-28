@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{22D5E9C8-9384-4681-B852-3919294A424B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalIndex.Entities", "MedicalIndex.Entities\MedicalIndex.Entities.csproj", "{D3DD40DD-9F35-4CAE-A521-E6EDDAF175F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3DD40DD-9F35-4CAE-A521-E6EDDAF175F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3DD40DD-9F35-4CAE-A521-E6EDDAF175F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3DD40DD-9F35-4CAE-A521-E6EDDAF175F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3DD40DD-9F35-4CAE-A521-E6EDDAF175F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D3DD40DD-9F35-4CAE-A521-E6EDDAF175F9} = {22D5E9C8-9384-4681-B852-3919294A424B}
+	EndGlobalSection
+EndGlobal
