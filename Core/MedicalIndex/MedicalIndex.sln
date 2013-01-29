@@ -1,9 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{22D5E9C8-9384-4681-B852-3919294A424B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{22D5E9C8-9384-4681-B852-3919294A424B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalIndex.Entities", "MedicalIndex.Entities\MedicalIndex.Entities.csproj", "{D3DD40DD-9F35-4CAE-A521-E6EDDAF175F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalIndex.WCFService", "MedicalIndex.WCFService\MedicalIndex.WCFService.csproj", "{6BCD53E5-6B93-4276-B281-4F32B2363FFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web client", "Web client", "{304496D1-715E-4F38-BE5F-895822FC45C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalIndex.Silverlight", "..\..\Clients\MedicalIndex.Silverlight\MedicalIndex.Silverlight.csproj", "{539049CE-C216-4CC6-B25D-44CC41D710AE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BC9746D3-B7C3-44A2-95CD-78F909B81AF8} = {BC9746D3-B7C3-44A2-95CD-78F909B81AF8}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalIndex.Silverlight.Web", "..\..\Clients\MedicalIndex.Silverlight.Web\MedicalIndex.Silverlight.Web.csproj", "{BC9746D3-B7C3-44A2-95CD-78F909B81AF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalIndex.Web", "..\..\Clients\MedicalIndex.Web\MedicalIndex.Web.csproj", "{2241B5FC-304C-4572-AEBA-23A262E59CCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalIndex.Web.Tests", "..\..\Clients\MedicalIndex.Web.Tests\MedicalIndex.Web.Tests.csproj", "{E0F35BE4-A35E-4F62-8C5C-FE3667E12D93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,11 +30,36 @@ Global
 		{D3DD40DD-9F35-4CAE-A521-E6EDDAF175F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3DD40DD-9F35-4CAE-A521-E6EDDAF175F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3DD40DD-9F35-4CAE-A521-E6EDDAF175F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BCD53E5-6B93-4276-B281-4F32B2363FFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BCD53E5-6B93-4276-B281-4F32B2363FFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BCD53E5-6B93-4276-B281-4F32B2363FFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BCD53E5-6B93-4276-B281-4F32B2363FFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{539049CE-C216-4CC6-B25D-44CC41D710AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{539049CE-C216-4CC6-B25D-44CC41D710AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{539049CE-C216-4CC6-B25D-44CC41D710AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{539049CE-C216-4CC6-B25D-44CC41D710AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC9746D3-B7C3-44A2-95CD-78F909B81AF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC9746D3-B7C3-44A2-95CD-78F909B81AF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC9746D3-B7C3-44A2-95CD-78F909B81AF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC9746D3-B7C3-44A2-95CD-78F909B81AF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2241B5FC-304C-4572-AEBA-23A262E59CCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2241B5FC-304C-4572-AEBA-23A262E59CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2241B5FC-304C-4572-AEBA-23A262E59CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2241B5FC-304C-4572-AEBA-23A262E59CCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0F35BE4-A35E-4F62-8C5C-FE3667E12D93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0F35BE4-A35E-4F62-8C5C-FE3667E12D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0F35BE4-A35E-4F62-8C5C-FE3667E12D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0F35BE4-A35E-4F62-8C5C-FE3667E12D93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D3DD40DD-9F35-4CAE-A521-E6EDDAF175F9} = {22D5E9C8-9384-4681-B852-3919294A424B}
+		{6BCD53E5-6B93-4276-B281-4F32B2363FFD} = {22D5E9C8-9384-4681-B852-3919294A424B}
+		{539049CE-C216-4CC6-B25D-44CC41D710AE} = {304496D1-715E-4F38-BE5F-895822FC45C5}
+		{BC9746D3-B7C3-44A2-95CD-78F909B81AF8} = {304496D1-715E-4F38-BE5F-895822FC45C5}
+		{2241B5FC-304C-4572-AEBA-23A262E59CCB} = {304496D1-715E-4F38-BE5F-895822FC45C5}
+		{E0F35BE4-A35E-4F62-8C5C-FE3667E12D93} = {304496D1-715E-4F38-BE5F-895822FC45C5}
 	EndGlobalSection
 EndGlobal
