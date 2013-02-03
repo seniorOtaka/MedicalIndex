@@ -25,5 +25,14 @@ namespace MedicalIndex.Entities
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<Facility> Facilities { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<ClinicalSpecialityEnum> ClinicalSpecialityEnums { get; set; }
+        public DbSet<Neighborhood> Neighborhoods { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<State> States { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<Phone> Phones { get; set; }
+        public DbSet<FacilityTypeEnum> FacilityTypeEnums { get; set; }
     }
 }

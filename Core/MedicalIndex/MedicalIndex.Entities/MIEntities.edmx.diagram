@@ -4,7 +4,36 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f2611741914541e9a8a341c9c8c8e5f1" Name="Diagram1" />
+      <Diagram DiagramId="54ffcb65e0c24d8f98f5e95be35788e6" Name="Facilities Diagram" >
+        <EntityTypeShape EntityType="MIEntities.Facility" Width="1.5" PointX="7.625" PointY="0.75" />
+        <EntityTypeShape EntityType="MIEntities.Clinic" Width="1.5" PointX="8.25" PointY="4.75" />
+        <InheritanceConnector EntityType="MIEntities.Clinic" />
+        <EntityTypeShape EntityType="MIEntities.Hospital" Width="1.5" PointX="1.125" PointY="4.125" />
+        <InheritanceConnector EntityType="MIEntities.Hospital" />
+        <EntityTypeShape EntityType="MIEntities.MedicalCenter" Width="1.5" PointX="4.125" PointY="4.125" />
+        <InheritanceConnector EntityType="MIEntities.MedicalCenter" />
+        <EntityTypeShape EntityType="MIEntities.Pharmacy" Width="1.5" PointX="12.125" PointY="3.875" />
+        <InheritanceConnector EntityType="MIEntities.Pharmacy" />
+        <EntityTypeShape EntityType="MIEntities.ClinicalSpecialityEnum" Width="1.5" PointX="0.75" PointY="1.25" />
+        <AssociationConnector Association="MIEntities.ClinicalSpecialityEnumClinic" />
+        <AssociationConnector Association="MIEntities.ClinicalSpecialityEnumHospital" />
+        <AssociationConnector Association="MIEntities.ClinicalSpecialityEnumMedicalCenter" />
+        <EntityTypeShape EntityType="MIEntities.Phone" Width="1.5" PointX="11.375" PointY="1.375" />
+        <AssociationConnector Association="MIEntities.FacilityPhone" />
+        <EntityTypeShape EntityType="MIEntities.FacilityTypeEnum" Width="1.5" PointX="5" PointY="1.125" />
+        <AssociationConnector Association="MIEntities.FacilityTypeEnumFacility" />
+      </Diagram>
+      <Diagram DiagramId="9dc0ec79befc4c8ebee854f195adea15" Name="location Diagram" >
+        <EntityTypeShape EntityType="MIEntities.State" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="MIEntities.City" Width="1.5" PointX="3" PointY="0.875" />
+        <AssociationConnector Association="MIEntities.StateCity" />
+        <EntityTypeShape EntityType="MIEntities.Neighborhood" Width="1.5" PointX="5.25" PointY="0.875" />
+        <AssociationConnector Association="MIEntities.CityNeighborhood" />
+        <EntityTypeShape EntityType="MIEntities.Location" Width="1.5" PointX="7.5" PointY="0.875" />
+        <AssociationConnector Association="MIEntities.NeighborhoodLocation" />
+        <EntityTypeShape EntityType="MIEntities.Country" Width="1.5" PointX="0.875" PointY="3.5" />
+        <AssociationConnector Association="MIEntities.CountryState" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
