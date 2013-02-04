@@ -8,13 +8,72 @@
   <EntityContainer Name="MIEntitiesStoreContainer">
     <EntitySet Name="Facilities" EntityType="MIEntities.Store.Facilities" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Locations" EntityType="MIEntities.Store.Locations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClinicalSpecialityEnums" EntityType="MIEntities.Store.ClinicalSpecialityEnums" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Neighborhoods" EntityType="MIEntities.Store.Neighborhoods" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cities" EntityType="MIEntities.Store.Cities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="States" EntityType="MIEntities.Store.States" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Countries" EntityType="MIEntities.Store.Countries" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Phones" EntityType="MIEntities.Store.Phones" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FacilityTypeEnums" EntityType="MIEntities.Store.FacilityTypeEnums" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LabModalities" EntityType="MIEntities.Store.LabModalities" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Facilities_Clinic" EntityType="MIEntities.Store.Facilities_Clinic" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Facilities_Hospital" EntityType="MIEntities.Store.Facilities_Hospital" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Facilities_MedicalCenter" EntityType="MIEntities.Store.Facilities_MedicalCenter" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Facilities_Laboratory" EntityType="MIEntities.Store.Facilities_Laboratory" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Facilities_Pharmacy" EntityType="MIEntities.Store.Facilities_Pharmacy" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClinicalSpecialityEnumHospital" EntityType="MIEntities.Store.ClinicalSpecialityEnumHospital" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClinicalSpecialityEnumMedicalCenter" EntityType="MIEntities.Store.ClinicalSpecialityEnumMedicalCenter" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="LocationFacility" Association="MIEntities.Store.LocationFacility">
       <End Role="Location" EntitySet="Locations" />
       <End Role="Facility" EntitySet="Facilities" />
+    </AssociationSet>
+    <AssociationSet Name="ClinicalSpecialityEnumClinic" Association="MIEntities.Store.ClinicalSpecialityEnumClinic">
+      <End Role="ClinicalSpecialityEnum" EntitySet="ClinicalSpecialityEnums" />
+      <End Role="Clinic" EntitySet="Facilities_Clinic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClinicalSpecialityEnumHospital_ClinicalSpecialityEnum" Association="MIEntities.Store.FK_ClinicalSpecialityEnumHospital_ClinicalSpecialityEnum">
+      <End Role="ClinicalSpecialityEnum" EntitySet="ClinicalSpecialityEnums" />
+      <End Role="ClinicalSpecialityEnumHospital" EntitySet="ClinicalSpecialityEnumHospital" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClinicalSpecialityEnumHospital_Hospital" Association="MIEntities.Store.FK_ClinicalSpecialityEnumHospital_Hospital">
+      <End Role="Hospital" EntitySet="Facilities_Hospital" />
+      <End Role="ClinicalSpecialityEnumHospital" EntitySet="ClinicalSpecialityEnumHospital" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClinicalSpecialityEnumMedicalCenter_ClinicalSpecialityEnum" Association="MIEntities.Store.FK_ClinicalSpecialityEnumMedicalCenter_ClinicalSpecialityEnum">
+      <End Role="ClinicalSpecialityEnum" EntitySet="ClinicalSpecialityEnums" />
+      <End Role="ClinicalSpecialityEnumMedicalCenter" EntitySet="ClinicalSpecialityEnumMedicalCenter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClinicalSpecialityEnumMedicalCenter_MedicalCenter" Association="MIEntities.Store.FK_ClinicalSpecialityEnumMedicalCenter_MedicalCenter">
+      <End Role="MedicalCenter" EntitySet="Facilities_MedicalCenter" />
+      <End Role="ClinicalSpecialityEnumMedicalCenter" EntitySet="ClinicalSpecialityEnumMedicalCenter" />
+    </AssociationSet>
+    <AssociationSet Name="NeighborhoodLocation" Association="MIEntities.Store.NeighborhoodLocation">
+      <End Role="Neighborhood" EntitySet="Neighborhoods" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="CityNeighborhood" Association="MIEntities.Store.CityNeighborhood">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Neighborhood" EntitySet="Neighborhoods" />
+    </AssociationSet>
+    <AssociationSet Name="StateCity" Association="MIEntities.Store.StateCity">
+      <End Role="State" EntitySet="States" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="CountryState" Association="MIEntities.Store.CountryState">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="State" EntitySet="States" />
+    </AssociationSet>
+    <AssociationSet Name="FacilityPhone" Association="MIEntities.Store.FacilityPhone">
+      <End Role="Facility" EntitySet="Facilities" />
+      <End Role="Phone" EntitySet="Phones" />
+    </AssociationSet>
+    <AssociationSet Name="FacilityTypeEnumFacility" Association="MIEntities.Store.FacilityTypeEnumFacility">
+      <End Role="FacilityTypeEnum" EntitySet="FacilityTypeEnums" />
+      <End Role="Facility" EntitySet="Facilities" />
+    </AssociationSet>
+    <AssociationSet Name="LaboratoryLabModalities" Association="MIEntities.Store.LaboratoryLabModalities">
+      <End Role="Laboratory" EntitySet="Facilities_Laboratory" />
+      <End Role="LabModalities" EntitySet="LabModalities" />
     </AssociationSet>
     <AssociationSet Name="FK_Clinic_inherits_Facility" Association="MIEntities.Store.FK_Clinic_inherits_Facility">
       <End Role="Facility" EntitySet="Facilities" />
@@ -28,6 +87,10 @@
       <End Role="Facility" EntitySet="Facilities" />
       <End Role="MedicalCenter" EntitySet="Facilities_MedicalCenter" />
     </AssociationSet>
+    <AssociationSet Name="FK_Laboratory_inherits_Facility" Association="MIEntities.Store.FK_Laboratory_inherits_Facility">
+      <End Role="Facility" EntitySet="Facilities" />
+      <End Role="Laboratory" EntitySet="Facilities_Laboratory" />
+    </AssociationSet>
     <AssociationSet Name="FK_Pharmacy_inherits_Facility" Association="MIEntities.Store.FK_Pharmacy_inherits_Facility">
       <End Role="Facility" EntitySet="Facilities" />
       <End Role="Pharmacy" EntitySet="Facilities_Pharmacy" />
@@ -40,36 +103,94 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Website" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Rating" Type="decimal" Nullable="false" />
     <Property Name="Location_Id" Type="int" Nullable="false" />
+    <Property Name="FacilityTypeEnum_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Locations">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Country" Type="int" StoreGeneratedPattern="Computed" Nullable="true" />
     <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="State" Type="int" Nullable="false" />
-    <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Neighborhood_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClinicalSpecialityEnums">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Neighborhoods">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="City_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="State_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="States">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Country_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Phones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Facility_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FacilityTypeEnums">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LabModalities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Laboratory_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Facilities_Clinic">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="ClinicId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="speciality" Type="int" Nullable="true" />
     <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ClinicalSpecialityEnum_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Facilities_Hospital">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="HospitalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Speciality" Type="int" Nullable="false" />
     <Property Name="NumberOfBeds" Type="int" Nullable="true" />
     <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
@@ -78,16 +199,36 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="MedicalCenterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Speciality" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Facilities_Laboratory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
     <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Facilities_Pharmacy">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="PharmacyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Is24Hours" Type="bit" Nullable="true" />
     <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClinicalSpecialityEnumHospital">
+    <Key>
+      <PropertyRef Name="ClinicalSpecialityEnum_Id" />
+      <PropertyRef Name="Hospitals_Id" />
+    </Key>
+    <Property Name="ClinicalSpecialityEnum_Id" Type="int" Nullable="false" />
+    <Property Name="Hospitals_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClinicalSpecialityEnumMedicalCenter">
+    <Key>
+      <PropertyRef Name="ClinicalSpecialityEnum_Id" />
+      <PropertyRef Name="MedicalCenters_Id" />
+    </Key>
+    <Property Name="ClinicalSpecialityEnum_Id" Type="int" Nullable="false" />
+    <Property Name="MedicalCenters_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="LocationFacility">
     <End Role="Location" Type="MIEntities.Store.Locations" Multiplicity="1" />
@@ -98,6 +239,150 @@
       </Principal>
       <Dependent Role="Facility">
         <PropertyRef Name="Location_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClinicalSpecialityEnumClinic">
+    <End Role="ClinicalSpecialityEnum" Type="MIEntities.Store.ClinicalSpecialityEnums" Multiplicity="1" />
+    <End Role="Clinic" Type="MIEntities.Store.Facilities_Clinic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClinicalSpecialityEnum">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Clinic">
+        <PropertyRef Name="ClinicalSpecialityEnum_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NeighborhoodLocation">
+    <End Role="Neighborhood" Type="MIEntities.Store.Neighborhoods" Multiplicity="1" />
+    <End Role="Location" Type="MIEntities.Store.Locations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Neighborhood">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="Neighborhood_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CityNeighborhood">
+    <End Role="City" Type="MIEntities.Store.Cities" Multiplicity="1" />
+    <End Role="Neighborhood" Type="MIEntities.Store.Neighborhoods" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Neighborhood">
+        <PropertyRef Name="City_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StateCity">
+    <End Role="State" Type="MIEntities.Store.States" Multiplicity="1" />
+    <End Role="City" Type="MIEntities.Store.Cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="State_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CountryState">
+    <End Role="Country" Type="MIEntities.Store.Countries" Multiplicity="1" />
+    <End Role="State" Type="MIEntities.Store.States" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="Country_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FacilityPhone">
+    <End Role="Facility" Type="MIEntities.Store.Facilities" Multiplicity="1" />
+    <End Role="Phone" Type="MIEntities.Store.Phones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Facility">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Phone">
+        <PropertyRef Name="Facility_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FacilityTypeEnumFacility">
+    <End Role="FacilityTypeEnum" Type="MIEntities.Store.FacilityTypeEnums" Multiplicity="1" />
+    <End Role="Facility" Type="MIEntities.Store.Facilities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FacilityTypeEnum">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Facility">
+        <PropertyRef Name="FacilityTypeEnum_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LaboratoryLabModalities">
+    <End Role="Laboratory" Type="MIEntities.Store.Facilities_Laboratory" Multiplicity="1" />
+    <End Role="LabModalities" Type="MIEntities.Store.LabModalities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Laboratory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LabModalities">
+        <PropertyRef Name="Laboratory_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClinicalSpecialityEnumHospital_ClinicalSpecialityEnum">
+    <End Role="ClinicalSpecialityEnum" Type="MIEntities.Store.ClinicalSpecialityEnums" Multiplicity="1" />
+    <End Role="ClinicalSpecialityEnumHospital" Type="MIEntities.Store.ClinicalSpecialityEnumHospital" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClinicalSpecialityEnum">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClinicalSpecialityEnumHospital">
+        <PropertyRef Name="ClinicalSpecialityEnum_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClinicalSpecialityEnumHospital_Hospital">
+    <End Role="ClinicalSpecialityEnumHospital" Type="MIEntities.Store.ClinicalSpecialityEnumHospital" Multiplicity="*" />
+    <End Role="Hospital" Type="MIEntities.Store.Facilities_Hospital" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Hospital">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClinicalSpecialityEnumHospital">
+        <PropertyRef Name="Hospitals_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClinicalSpecialityEnumMedicalCenter_ClinicalSpecialityEnum">
+    <End Role="ClinicalSpecialityEnum" Type="MIEntities.Store.ClinicalSpecialityEnums" Multiplicity="1" />
+    <End Role="ClinicalSpecialityEnumMedicalCenter" Type="MIEntities.Store.ClinicalSpecialityEnumMedicalCenter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClinicalSpecialityEnum">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClinicalSpecialityEnumMedicalCenter">
+        <PropertyRef Name="ClinicalSpecialityEnum_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClinicalSpecialityEnumMedicalCenter_MedicalCenter">
+    <End Role="ClinicalSpecialityEnumMedicalCenter" Type="MIEntities.Store.ClinicalSpecialityEnumMedicalCenter" Multiplicity="*" />
+    <End Role="MedicalCenter" Type="MIEntities.Store.Facilities_MedicalCenter" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="MedicalCenter">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClinicalSpecialityEnumMedicalCenter">
+        <PropertyRef Name="MedicalCenters_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -139,6 +424,20 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="MedicalCenter">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Laboratory_inherits_Facility">
+    <End Role="Facility" Type="MIEntities.Store.Facilities" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Laboratory" Type="MIEntities.Store.Facilities_Laboratory" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Facility">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Laboratory">
         <PropertyRef Name="Id" />
       </Dependent>
     </ReferentialConstraint>
@@ -211,6 +510,11 @@
             <End Role="FacilityTypeEnum" EntitySet="FacilityTypeEnums" />
             <End Role="Facility" EntitySet="Facilities" />
           </AssociationSet>
+          <EntitySet Name="LabModalities" EntityType="MIEntities.LabModalities" />
+          <AssociationSet Name="LaboratoryLabModalities" Association="MIEntities.LaboratoryLabModalities">
+            <End Role="Laboratory" EntitySet="Facilities" />
+            <End Role="LabModalities" EntitySet="LabModalities" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Facility">
           <Key>
@@ -220,11 +524,11 @@
           <Property Type="String" Name="Name" Nullable="false" />
           <NavigationProperty Name="Location" Relationship="MIEntities.LocationFacility" FromRole="Facility" ToRole="Location" />
           <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" Unicode="true" />
-          <Property Type="String" Name="Phone" Nullable="false" />
           <Property Type="String" Name="Email" Nullable="false" />
           <Property Type="String" Name="Website" Nullable="false" />
           <NavigationProperty Name="Phones" Relationship="MIEntities.FacilityPhone" FromRole="Facility" ToRole="Phone" />
           <NavigationProperty Name="FacilityTypeEnum" Relationship="MIEntities.FacilityTypeEnumFacility" FromRole="Facility" ToRole="FacilityTypeEnum" />
+          <Property Type="Decimal" Name="Rating" Nullable="false" />
         </EntityType>
         <EntityType Name="Location">
           <Key>
@@ -352,6 +656,21 @@
           <End Type="MIEntities.FacilityTypeEnum" Role="FacilityTypeEnum" Multiplicity="1" />
           <End Type="MIEntities.Facility" Role="Facility" Multiplicity="*" />
         </Association>
+        <EntityType Name="Laboratory" BaseType="MIEntities.Facility" >
+          <NavigationProperty Name="LabModalities" Relationship="MIEntities.LaboratoryLabModalities" FromRole="Laboratory" ToRole="LabModalities" />
+        </EntityType>
+        <EntityType Name="LabModalities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Laboratory" Relationship="MIEntities.LaboratoryLabModalities" FromRole="LabModalities" ToRole="Laboratory" />
+          <Property Type="String" Name="Name" Nullable="false" />
+        </EntityType>
+        <Association Name="LaboratoryLabModalities">
+          <End Type="MIEntities.Laboratory" Role="Laboratory" Multiplicity="1" />
+          <End Type="MIEntities.LabModalities" Role="LabModalities" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -364,9 +683,9 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(MIEntities.Clinic)">
@@ -386,6 +705,11 @@
           <ScalarProperty Name="MedicalCenterId" ColumnName="MedicalCenterId" />
         </MappingFragment>
       </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(MIEntities.Laboratory)">
+        <MappingFragment StoreEntitySet="Facilities_Laboratory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(MIEntities.Pharmacy)">
         <MappingFragment StoreEntitySet="Facilities_Pharmacy">
           <ScalarProperty Name="Id" ColumnName="Id" />
@@ -397,6 +721,73 @@
       <EntityTypeMapping TypeName="IsTypeOf(MIEntities.Location)">
         <MappingFragment StoreEntitySet="Locations">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClinicalSpecialityEnums">
+      <EntityTypeMapping TypeName="IsTypeOf(MIEntities.ClinicalSpecialityEnum)">
+        <MappingFragment StoreEntitySet="ClinicalSpecialityEnums">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Neighborhoods">
+      <EntityTypeMapping TypeName="IsTypeOf(MIEntities.Neighborhood)">
+        <MappingFragment StoreEntitySet="Neighborhoods">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="IsTypeOf(MIEntities.City)">
+        <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="IsTypeOf(MIEntities.State)">
+        <MappingFragment StoreEntitySet="States">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="IsTypeOf(MIEntities.Country)">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Phones">
+      <EntityTypeMapping TypeName="IsTypeOf(MIEntities.Phone)">
+        <MappingFragment StoreEntitySet="Phones">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacilityTypeEnums">
+      <EntityTypeMapping TypeName="IsTypeOf(MIEntities.FacilityTypeEnum)">
+        <MappingFragment StoreEntitySet="FacilityTypeEnums">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LabModalities">
+      <EntityTypeMapping TypeName="IsTypeOf(MIEntities.LabModalities)">
+        <MappingFragment StoreEntitySet="LabModalities">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -405,6 +796,86 @@
         <ScalarProperty Name="Id" ColumnName="Location_Id" />
       </EndProperty>
       <EndProperty Name="Facility">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ClinicalSpecialityEnumClinic" TypeName="MIEntities.ClinicalSpecialityEnumClinic" StoreEntitySet="Facilities_Clinic">
+      <EndProperty Name="ClinicalSpecialityEnum">
+        <ScalarProperty Name="Id" ColumnName="ClinicalSpecialityEnum_Id" />
+      </EndProperty>
+      <EndProperty Name="Clinic">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ClinicalSpecialityEnumHospital" TypeName="MIEntities.ClinicalSpecialityEnumHospital" StoreEntitySet="ClinicalSpecialityEnumHospital">
+      <EndProperty Name="ClinicalSpecialityEnum">
+        <ScalarProperty Name="Id" ColumnName="ClinicalSpecialityEnum_Id" />
+      </EndProperty>
+      <EndProperty Name="Hospital">
+        <ScalarProperty Name="Id" ColumnName="Hospitals_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ClinicalSpecialityEnumMedicalCenter" TypeName="MIEntities.ClinicalSpecialityEnumMedicalCenter" StoreEntitySet="ClinicalSpecialityEnumMedicalCenter">
+      <EndProperty Name="ClinicalSpecialityEnum">
+        <ScalarProperty Name="Id" ColumnName="ClinicalSpecialityEnum_Id" />
+      </EndProperty>
+      <EndProperty Name="MedicalCenter">
+        <ScalarProperty Name="Id" ColumnName="MedicalCenters_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="NeighborhoodLocation" TypeName="MIEntities.NeighborhoodLocation" StoreEntitySet="Locations">
+      <EndProperty Name="Neighborhood">
+        <ScalarProperty Name="Id" ColumnName="Neighborhood_Id" />
+      </EndProperty>
+      <EndProperty Name="Location">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CityNeighborhood" TypeName="MIEntities.CityNeighborhood" StoreEntitySet="Neighborhoods">
+      <EndProperty Name="City">
+        <ScalarProperty Name="Id" ColumnName="City_Id" />
+      </EndProperty>
+      <EndProperty Name="Neighborhood">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="StateCity" TypeName="MIEntities.StateCity" StoreEntitySet="Cities">
+      <EndProperty Name="State">
+        <ScalarProperty Name="Id" ColumnName="State_Id" />
+      </EndProperty>
+      <EndProperty Name="City">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CountryState" TypeName="MIEntities.CountryState" StoreEntitySet="States">
+      <EndProperty Name="Country">
+        <ScalarProperty Name="Id" ColumnName="Country_Id" />
+      </EndProperty>
+      <EndProperty Name="State">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FacilityPhone" TypeName="MIEntities.FacilityPhone" StoreEntitySet="Phones">
+      <EndProperty Name="Facility">
+        <ScalarProperty Name="Id" ColumnName="Facility_Id" />
+      </EndProperty>
+      <EndProperty Name="Phone">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FacilityTypeEnumFacility" TypeName="MIEntities.FacilityTypeEnumFacility" StoreEntitySet="Facilities">
+      <EndProperty Name="FacilityTypeEnum">
+        <ScalarProperty Name="Id" ColumnName="FacilityTypeEnum_Id" />
+      </EndProperty>
+      <EndProperty Name="Facility">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LaboratoryLabModalities" TypeName="MIEntities.LaboratoryLabModalities" StoreEntitySet="LabModalities">
+      <EndProperty Name="Laboratory">
+        <ScalarProperty Name="Id" ColumnName="Laboratory_Id" />
+      </EndProperty>
+      <EndProperty Name="LabModalities">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

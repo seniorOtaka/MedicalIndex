@@ -61,7 +61,16 @@
     <Compile Include="Facility.cs">
       <DependentUpon>MIEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="FacilityTypeEnum.cs">
+      <DependentUpon>MIEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Hospital.cs">
+      <DependentUpon>MIEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LabModalities.cs">
+      <DependentUpon>MIEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Laboratory.cs">
       <DependentUpon>MIEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Location.cs">
@@ -89,6 +98,9 @@
       <DependentUpon>MIEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Pharmacy.cs">
+      <DependentUpon>MIEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Phone.cs">
       <DependentUpon>MIEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

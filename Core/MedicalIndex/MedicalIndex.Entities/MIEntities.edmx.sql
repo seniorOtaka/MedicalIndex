@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 01/31/2013 18:50:43
--- Generated from EDMX file: E:\MedicalIndex\Core\MedicalIndex\MedicalIndex.Entities\MIEntities.edmx
+-- Date Created: 02/04/2013 11:04:05
+-- Generated from EDMX file: D:\Users\maboelmagd\Documents\MedicalIndex\Core\MedicalIndex\MedicalIndex.Entities\MIEntities.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -65,9 +65,9 @@ CREATE TABLE [dbo].[Facilities] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [Description] nvarchar(max)  NOT NULL,
-    [Phone] nvarchar(max)  NOT NULL,
     [Email] nvarchar(max)  NOT NULL,
     [Website] nvarchar(max)  NOT NULL,
+    [Rating] decimal(18,0)  NOT NULL,
     [Location_Id] int  NOT NULL,
     [FacilityTypeEnum_Id] int  NOT NULL
 );
@@ -136,6 +136,14 @@ CREATE TABLE [dbo].[FacilityTypeEnums] (
 );
 GO
 
+-- Creating table 'LabModalities'
+CREATE TABLE [dbo].[LabModalities] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(max)  NOT NULL,
+    [Laboratory_Id] int  NOT NULL
+);
+GO
+
 -- Creating table 'Facilities_Clinic'
 CREATE TABLE [dbo].[Facilities_Clinic] (
     [Id] int  NOT NULL,
@@ -153,6 +161,12 @@ GO
 -- Creating table 'Facilities_MedicalCenter'
 CREATE TABLE [dbo].[Facilities_MedicalCenter] (
     [MedicalCenterId] int IDENTITY(1,1) NOT NULL,
+    [Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'Facilities_Laboratory'
+CREATE TABLE [dbo].[Facilities_Laboratory] (
     [Id] int  NOT NULL
 );
 GO
@@ -236,6 +250,12 @@ ADD CONSTRAINT [PK_FacilityTypeEnums]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
+-- Creating primary key on [Id] in table 'LabModalities'
+ALTER TABLE [dbo].[LabModalities]
+ADD CONSTRAINT [PK_LabModalities]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
 -- Creating primary key on [Id] in table 'Facilities_Clinic'
 ALTER TABLE [dbo].[Facilities_Clinic]
 ADD CONSTRAINT [PK_Facilities_Clinic]
@@ -251,6 +271,12 @@ GO
 -- Creating primary key on [Id] in table 'Facilities_MedicalCenter'
 ALTER TABLE [dbo].[Facilities_MedicalCenter]
 ADD CONSTRAINT [PK_Facilities_MedicalCenter]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Facilities_Laboratory'
+ALTER TABLE [dbo].[Facilities_Laboratory]
+ADD CONSTRAINT [PK_Facilities_Laboratory]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -434,6 +460,20 @@ ON [dbo].[Facilities]
     ([FacilityTypeEnum_Id]);
 GO
 
+-- Creating foreign key on [Laboratory_Id] in table 'LabModalities'
+ALTER TABLE [dbo].[LabModalities]
+ADD CONSTRAINT [FK_LaboratoryLabModalities]
+    FOREIGN KEY ([Laboratory_Id])
+    REFERENCES [dbo].[Facilities_Laboratory]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_LaboratoryLabModalities'
+CREATE INDEX [IX_FK_LaboratoryLabModalities]
+ON [dbo].[LabModalities]
+    ([Laboratory_Id]);
+GO
+
 -- Creating foreign key on [Id] in table 'Facilities_Clinic'
 ALTER TABLE [dbo].[Facilities_Clinic]
 ADD CONSTRAINT [FK_Clinic_inherits_Facility]
@@ -455,6 +495,15 @@ GO
 -- Creating foreign key on [Id] in table 'Facilities_MedicalCenter'
 ALTER TABLE [dbo].[Facilities_MedicalCenter]
 ADD CONSTRAINT [FK_MedicalCenter_inherits_Facility]
+    FOREIGN KEY ([Id])
+    REFERENCES [dbo].[Facilities]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Id] in table 'Facilities_Laboratory'
+ALTER TABLE [dbo].[Facilities_Laboratory]
+ADD CONSTRAINT [FK_Laboratory_inherits_Facility]
     FOREIGN KEY ([Id])
     REFERENCES [dbo].[Facilities]
         ([Id])

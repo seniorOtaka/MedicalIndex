@@ -12,22 +12,11 @@ namespace MedicalIndex.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Facility
+    public partial class LabModalities
     {
-        public Facility()
-        {
-            this.Phones = new HashSet<Phone>();
-        }
-    
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public string Email { get; set; }
-        public string Website { get; set; }
-        public decimal Rating { get; set; }
     
-        public virtual Location Location { get; set; }
-        public virtual ICollection<Phone> Phones { get; set; }
-        public virtual FacilityTypeEnum FacilityTypeEnum { get; set; }
+        public virtual Laboratory Laboratory { get; set; }
     }
 }

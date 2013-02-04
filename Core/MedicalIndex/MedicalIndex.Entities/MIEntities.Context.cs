@@ -34,5 +34,6 @@ namespace MedicalIndex.Entities
         public DbSet<Country> Countries { get; set; }
         public DbSet<Phone> Phones { get; set; }
         public DbSet<FacilityTypeEnum> FacilityTypeEnums { get; set; }
+        public DbSet<LabModalities> LabModalities { get; set; }
     }
 }
